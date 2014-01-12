@@ -1,12 +1,15 @@
 from bs4 import BeautifulSoup
-
+import mechanize
+from getSource import *
 
 gradeValues = {"A+":4, "A":4, "A-":3.67, "B+":3.33, "B":3, "B-":2.67, "C+":2.33, "C":2, "C-":1.67, "D+":1.33, "D":1, "D-": 0.67, "F":0}
 
 
 def main():
 
-	soup = getFile()
+	#soup = getFile()
+	source = navToPage()
+	soup = BeautifulSoup(source)
 
 	semesters = soup.findAll('td', id="REG_TERM_DESC")
 	numSem = len(semesters)
@@ -22,20 +25,6 @@ def main():
 
 	print calculateGPA(grades)
 
-def getFile():
-	
-	gpafile = ""
-
-	while gpafile == "":
-		try:
-			fileName = raw_input("\nPlease input the name of the 'Grades at a Glance' source code file (e.g. index.html): ")
-			gpafile = open(fileName, "r")	
-		except IOError:
-			print "\nFile does not exist. Try again."
-
-	doc = gpafile.read()
-
-	return BeautifulSoup(doc)
 
 
 def getData(numSem, grades, soup):
@@ -60,5 +49,26 @@ def calculateGPA(grades):
 		count += num 
 
 	return "\nYour GPA: %f\n" % (total/count)
+
+
+"""
+def getFile():
+	#Use this method if you have the source file.
+	
+	gpafile = ""
+
+	while gpafile == "":
+		try:
+			fileName = raw_input("\nPlease input the name of the 'Grades at a Glance' source code file (e.g. index.html): ")
+			gpafile = open(fileName, "r")	
+		except IOError:
+			print "\nFile does not exist. Try again."
+
+	doc = gpafile.read()
+
+	return BeautifulSoup(doc)
+
+"""
+
 
 main()
