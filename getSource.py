@@ -2,6 +2,8 @@ import mechanize
 import getpass
 import re
 
+#TODO: Add comments
+
 def navToPage():
 
 	br = mechanize.Browser()
@@ -56,4 +58,3 @@ def navToPage():
 	return response4.read()
 
 
-navToPage()

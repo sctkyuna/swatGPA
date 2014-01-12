@@ -2,15 +2,19 @@ from bs4 import BeautifulSoup
 import mechanize
 from getSource import *
 
-gradeValues = {"A+":4, "A":4, "A-":3.67, "B+":3.33, "B":3, "B-":2.67, "C+":2.33, "C":2, "C-":1.67, "D+":1.33, "D":1, "D-": 0.67, "F":0}
+gradeValues = {"A+":4, "A":4, "A-":3.67, "B+":3.33, "B":3.0, "B-":2.67, "C+":2.33, "C":2.0, "C-":1.67, "D+":1.33, "D":1.0, "D-": 0.67, "F":0.0}
+
+#TODO: Add shadow grades and major GPA option
+#TODO: Add support for Bryn Mawr (and Haverford?) grades
+#TODO: MAKE A WEB APP?!?
 
 
 def main():
 
-	#soup = getFile()
 	source = navToPage()
 	soup = BeautifulSoup(source)
 
+	# Obtain number of semesters
 	semesters = soup.findAll('td', id="REG_TERM_DESC")
 	numSem = len(semesters)
 	grades = {}
@@ -26,49 +30,37 @@ def main():
 	print calculateGPA(grades)
 
 
-
 def getData(numSem, grades, soup):
-
+	"""
+	Fills in dictionary "grades" with key "letter grade" and value "credit value"
+	"""
+	
+	# For each semester, grabs letter grades and credit value.
 	for i in range(numSem):
 		CRED_ATT = "CRED_ATT_%03i" %i
 		LETTER = "GRADE_%03i" %i
-		curSemCred = soup.findAll('td', headers=CRED_ATT)
-		curSemLetter = soup.findAll('td', headers=LETTER)
+		curSemCred = soup.findAll('td', headers=CRED_ATT) #e.g. [0.5, 1, 1.5, 1]
+		curSemLetter = soup.findAll('td', headers=LETTER) #e.g. [A, A, A-, B+]
 		for j in range(len(curSemCred)):
 			letter = curSemLetter[j].text
+			# If letter does not conform to a grade, ignore it (e.g. CR or NC).
 			if letter in gradeValues:
 				cred = float(curSemCred[j].text)
 				grades[letter] = grades.setdefault(letter, 0.0) + cred
 	
+
 def calculateGPA(grades):
 	total = 0
 	count = 0	
 	for item in grades:
-		num = grades[item]
-		total += gradeValues[item] * num
-		count += num 
+		num = grades[item] # number of letter grade received
+		total += gradeValues[item] * num # total additive value of grades
+		count += num # total number of letter grades received
 
 	return "\nYour GPA: %f\n" % (total/count)
 
 
-"""
-def getFile():
-	#Use this method if you have the source file.
-	
-	gpafile = ""
-
-	while gpafile == "":
-		try:
-			fileName = raw_input("\nPlease input the name of the 'Grades at a Glance' source code file (e.g. index.html): ")
-			gpafile = open(fileName, "r")	
-		except IOError:
-			print "\nFile does not exist. Try again."
-
-	doc = gpafile.read()
-
-	return BeautifulSoup(doc)
-
-"""
 
 
-main()
+if __name__ == "__main__":
+	main()
