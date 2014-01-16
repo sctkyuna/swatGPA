@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import mechanize
-import unicode
 from getSource import *
 
 gradeValues = {"A+":4, "A":4, "A-":3.67, "B+":3.33, "B":3.0, "B-":2.67, "C+":2.33, "C":2.0, "C-":1.67, "D+":1.33, "D":1.0, "D-": 0.67, "F":0.0}
@@ -101,7 +100,7 @@ def calculateGPA(grades):
 		try:
 			total += gradeValues[item] * num 	
 		except KeyError:
-			total += item * num
+			total += float(item) * num
 		count += num 
 	return "\nYour GPA: %f\n" % (total/count)
 
