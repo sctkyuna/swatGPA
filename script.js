@@ -10,15 +10,17 @@ $(document).ready(function() {
 		var UserID = $('input[name=user').val();
         var PIN = $('input[name=pin').val();
         
-        var GPA = {
+        //TODO: figure out how to save php output to js var
+        /*var GPA =
         	<?php 
 	        	$handle=proc_open('python test.py', 'r');
 	        	echo "$handle'; " . gettype($handle) . "\n";
 	        	echo $read;
 	        	pclose($handle);
-        	?>
-        }
+        	?>;
 
+        console.log(GPA);
+  		*/
 
         return false;
 	}
