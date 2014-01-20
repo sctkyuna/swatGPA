@@ -1,2 +1,5 @@
 myswat.html
 *.pyc
+*sublime*
+*.swp
+.DS_Store

@@ -1,0 +1,55 @@
+body {
+	text-align: center;
+}
+
+#intro {
+	border: 5px solid #8B1A1A;
+	border-radius = 10px;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	vertical-align: middle;
+	background-image:url('Swarthmore1.jpg'); 
+	/* TODO: Change bg picture to something longer */
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+
+h1 {
+	margin-bottom: 0px;
+}
+
+h3 {
+	font-weight: bold;
+	display: inline-block;
+	line-height: 50%;
+}
+
+p {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+form {
+	/*border:5px solid #8B1A1A;
+	border-radius: 10px;*/
+	padding-bottom: 20px; 
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+#submitButton {
+    display: inline-block;
+    height:20px;
+	width:70px;
+	background-color:#cc0000;
+	font-weight:bold;
+	color:#ffffff;
+	border-radius: 5px;
+	text-align: center;
+	margin-top: 10px;
+	cursor: pointer;
+	opacity: .5;
+
+}
