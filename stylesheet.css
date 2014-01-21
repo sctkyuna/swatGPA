@@ -1,10 +1,11 @@
 body {
 	text-align: center;
+	background: url('squared_metal.png');
 }
 
 #intro {
 	border: 5px solid #8B1A1A;
-	border-radius = 10px;
+	border-radius: 10px;
 	margin-left: 10%;
 	margin-right: 10%;
 	margin-bottom: 20px;
@@ -18,6 +19,14 @@ body {
 
 h1 {
 	margin-bottom: 0px;
+}
+
+#gpa {
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+	top: 50%;
+	left: 50%;
 }
 
 h3 {
@@ -40,8 +49,8 @@ form {
 }
 
 #submitButton {
-    display: inline-block;
-    height:20px;
+	display: inline-block;
+  height:20px;
 	width:70px;
 	background-color:#cc0000;
 	font-weight:bold;
