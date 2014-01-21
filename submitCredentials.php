@@ -25,14 +25,7 @@ if (is_resource($process)) {
 	echo stream_get_contents($pipes[1]);
 	fclose($pipes[1]);
 	fclose($pipes[0]);
-	pclose($process);
-
-
-//	$handle = proc_open($run, 'r');
-//	echo "$handle; " . gettype($handle) . "\n";
-//	$read = fread($handle, 8);
-//	echo $read;
-	pclose($handle);
+	proc_close($process);
 
 }
 

@@ -1,3 +1,9 @@
-hosted on http://cs.swarthmore.edu/~scho1/swatGPA
+hosted at www.sccs.swarthmore.edu/users/14/scho1
 
-soon to be moved to sccs servers for SSL
+TODO:
+contact webmaster (Noah? Daniel Elias?) about making site SSL
+make adjustments to getSource.py to take credentials as argument
+sanitize submitCredentials.php post input
+change script in submitCredentials.php to gpaCalc.py
+add shadowgrade and major options in gpaCalc.py
+
