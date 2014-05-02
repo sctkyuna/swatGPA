@@ -1,9 +1,15 @@
 hosted at www.sccs.swarthmore.edu/users/14/scho1
 
-TODO:
-contact webmaster (Noah? Daniel Elias?) about making site SSL
-make adjustments to getSource.py to take credentials as argument
-sanitize submitCredentials.php post input
-change script in submitCredentials.php to gpaCalc.py
-add shadowgrade and major options in gpaCalc.py
+STATUS: On hold
 
+Swarthmore Information Technology Services (ITS) does not want 
+a third-party site collecting credentials, and effectively shut
+this project down. Instead, Joel Cooper, the CITO, is working
+towards incorporating a GPA calculator in the main mySwat website.
+
+TODO:
+- Acquire SSL from SCCS webmasters (Daniel Elias, Noah?)
+- Adjust getSource.py to take credentials as argument
+- Santize submitCredentials.php post input
+- Change script in submitCredentials.php to gpaCalc.py
+- Add shadowgrade and major options in gpacalc.py
